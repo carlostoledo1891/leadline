@@ -147,3 +147,19 @@ def test_docs_links_resolve():
         assert local and all(os.path.isfile(os.path.join(ROOT, 'docs', u)) for u in local), (name, [u for u in local if not os.path.isfile(os.path.join(ROOT, 'docs', u))])
         for target, anchor in re.findall(r'href="([a-z]+\.html)?#([\w-]+)"', t):
             assert 'id="%s"' % anchor in pages[target or name], (name, target, anchor)
+
+
+def test_export_writes_every_format_and_the_grey_twin(tmp_path):
+    import leadline.export as lx
+    def build(mode):
+        fig, ax = plt.subplots(figsize=lx.size('column', 0.6))
+        lm.line(ax, [0, 1], [0, 1], lm.COMPUTED, series=1)
+        return fig
+    paths = lx.save(build, 'x', out=str(tmp_path), formats=('svg', 'pdf'))
+    assert sorted(os.path.basename(p) for p in paths) == ['x-grey.pdf', 'x-grey.svg', 'x.pdf', 'x.svg']
+    colour, grey = (open(os.path.join(str(tmp_path), n), encoding='utf-8').read() for n in ('x.svg', 'x-grey.svg'))
+    blue = '#' + lm.REGISTER['tokens']['id-2']['hex'].lstrip('#')
+    assert blue in colour and blue not in grey                  # the twin is drawn in grey, not converted
+    with pytest.raises(TypeError):
+        lx.save(build(None), 'y', out=str(tmp_path))             # a figure, not its builder: refused
+    assert abs(lx.size('full')[0] * 25.4 - 160) < 1e-9

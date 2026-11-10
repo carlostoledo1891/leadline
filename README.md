@@ -13,19 +13,20 @@ Leadline is a dialect of **WARRANT**, the visual grammar of [cert-machine](https
 made for metocean and offshore teams: return levels, environmental contours, design waves, fields over a basin. It brings
 WARRANT to the tools those figures are made with: **matplotlib**, **plotly** and **Figma**.
 
-**Status: v0.1.0, a starter to iterate on.**
+**Status: v0.2.0, a starter to iterate on.** [![test](https://github.com/carlostoledo1891/leadline/actions/workflows/test.yml/badge.svg)](https://github.com/carlostoledo1891/leadline/actions/workflows/test.yml)
 
 | part | what | status |
 |---|---|---|
 | `leadline.mpl` | the print register for matplotlib (WARRANT v2.3, "on paper"): strokes, inks, three series identities, the neutral order ramp, the witness, the void, the legend, the premise ladder | approved in WARRANT (2026-10-29); copied byte for byte from cert-machine |
 | `leadline.plotly` | the same register for plotly: a template (`'warrant'`, `'warrant-grey'`) and the same helpers and refusals | new here |
 | `leadline.fields` | colour for **fields** — magnitude, difference, direction — from Crameri's scientific colour maps | **a proposal**, not yet part of WARRANT |
+| `leadline.export` | report sizes (A4 full width 160 mm, a column 84 mm, a slide) and one call that writes SVG, PDF and PNG with the greyscale twin | new here |
 | `tokens/leadline.tokens.json` | the same values as design tokens for Figma (Tokens Studio) | generated |
 
 ## Install
 
 ```bash
-pip install -e ".[all]"            # from this folder: matplotlib, numpy, plotly, cmcrameri
+pip install -e ".[all]"            # from this folder: matplotlib, numpy, plotly, cmcrameri, scipy, virocon
 ```
 
 Python ≥ 3.7. Tested on Python 3.9.6 with matplotlib 3.9.4, plotly 7.1.0 and cmcrameri 1.8.
@@ -90,14 +91,20 @@ proposal is approved, `leadline.mpl.field` (the neutral ramp) is the approved wa
 
 | example | shows |
 |---|---|
+| `ex5_contour_virocon` | a 20-year IFORM contour from virocon's OMAE2020 Hs–Tz model fitted to dataset A: computed, over the hours counted exactly into chosen cells, with the premises it rests on |
+| `ex6_rose` | a wave rose (NDBC 44007, 2015): exact counts given 16 sectors and 1 m classes; the records with no direction counted in words |
+| `ex7_qq` | monthly maxima against a fitted GEV: the curve as strong as its weaker coordinate — computed |
+| `ex8_peaks` | peaks over a threshold: the record solid, the threshold chosen (given p = 0.99), the storm peaks exact, a gap in the record as a void |
 | `ex1_design_wave` | a certified 100-year Hs by block: the picked family decided, the other hollow, the delta interval computed, a refused choice as a void with words |
 | `ex2_return_curve` | a return-level curve: certified knots decided, the joins chosen, the 100-year period a guide, the premise ladder |
-| `ex3_contours` | three submitted 20-year environmental contours over the hours counted exactly into cells (the neutral ramp). Its small side panel is the kit's demonstration of the witness, on an unrelated record (a printed arithmetic step that does not hold) |
-| `ex4_fields` | **the proposal**: a synthetic magnitude field with an interpolated level line (computed), and a synthetic difference field |
-| `plotly_ex*` | the same figures in plotly; legends and colour bars sit under the plot, so they read at a phone's 390 px |
+| `ex3_contours` | three submitted 20-year contours over the hours counted exactly into cells; its small side panel is the kit's demonstration of the witness on an unrelated record |
+| `ex4_fields` | **the proposal**: a synthetic magnitude field and a synthetic difference field |
+| `plotly_ex*` | interactive versions (1, 2, 3, 4, 5, 8); legends and colour bars under the plot, read at a phone's 390 px |
 
-The data of examples 1–3 come from cert-machine's public records (buoy A of NDBC; dataset A of the environmental-contour
-benchmark) and carry their own licence: see `examples/data/README.md`. Example 4 is made up and says so.
+The data of examples 1–3 come from cert-machine's public records and carry their own licence (`examples/data/README.md`).
+Examples 5–8 read public records fetched at their pins by `examples/data/fetch.py` and never committed (dataset A of the
+environmental-contour benchmark; NDBC buoy 44007). Example 4 is made up and says so. **The guide**, "what does each number
+rest on?", classifies the numbers of a metocean pipeline with these examples: `docs/guide.html`.
 
 ## To iterate — what would help us most
 
@@ -119,8 +126,7 @@ A change to the grammar itself starts in cert-machine; a change to the proposal 
 
 ```bash
 python -m pytest tests/                     # the checks, each with its red control
-python tools/build_docs.py                  # rebuild docs/ (the documentation page) from the package
-cd docs && npx vercel deploy --prod         # publish it (the Vercel project "leadline")
+python tools/build_docs.py                  # rebuild docs/ (the documentation pages) from the package; a push to main publishes them
 python tools/validate_fields.py --check      # the proposal's numbers are what the maps measure
 python tools/tokens.py --check               # the Figma tokens are what the sources give
 python examples/plotly_examples.py           # redraw the plotly examples (the matplotlib ones: examples/ex*.py)

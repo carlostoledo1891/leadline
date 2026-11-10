@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "leadline"
-version = "0.1.0"
+version = "0.2.0"
 description = "WARRANT's grammar for the sea and for fields: matplotlib and plotly figures in which every mark says what it rests on"
 readme = "README.md"
 license = { text = "MIT" }
@@ -15,8 +15,10 @@ dependencies = ["matplotlib>=3.5", "numpy"]
 [project.optional-dependencies]
 plotly = ["plotly>=5.6"]
 fields = ["cmcrameri"]
-all = ["plotly>=5.6", "cmcrameri"]
-test = ["pytest", "plotly>=5.6", "cmcrameri"]
+examples = ["plotly>=5.6", "cmcrameri", "scipy", "virocon"]
+all = ["plotly>=5.6", "cmcrameri", "scipy", "virocon"]
+# the field proposal's numbers and the Figma tokens are measured from the maps, so the tests pin the version they were measured with
+test = ["pytest", "plotly>=5.6", "cmcrameri==1.8", "scipy", "virocon"]
 
 [tool.setuptools]
 packages = ["leadline", "leadline.mpl"]

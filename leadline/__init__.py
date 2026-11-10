@@ -11,5 +11,5 @@ Leadline is a dialect of WARRANT, the grammar of cert-machine (github.com/carlos
 inks, identities, ramp and legend words are read from leadline/mpl/register.json, which cert-machine generates; PINS.json
 names every file taken from there and its sha256. MIT licensed.
 """
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 GRAMMAR = 'WARRANT v2.3 (print register), cert-machine design/WARRANT.md; field colours proposed, not yet approved'
