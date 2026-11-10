@@ -74,7 +74,7 @@ figure{margin:24px 0}figure img{display:block;width:100%%;height:auto;border:1px
 figcaption{font-size:14px;color:var(--ink-3);margin-top:8px;max-width:72ch}figcaption a{margin-right:14px;font-family:var(--mono);font-size:12px}
 table{border-collapse:collapse;width:100%%;font-size:14px;margin:12px 0 20px}th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--grid)}
 th{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}td.w{white-space:nowrap}
-.tablewrap{overflow-x:auto}
+.tablewrap{overflow-x:auto}table.guide{table-layout:fixed;min-width:560px}
 .spec{display:block;max-width:100%%}
 .rules{padding-left:20px}.rules li{margin:0 0 8px;max-width:72ch}
 .swatch{height:14px;border:1px solid var(--grid);min-width:120px}
@@ -111,22 +111,26 @@ def page():
         frows.append('<tr><td class="w"><b>%s</b></td><td class="w"><code>%s</code></td><td><div class="swatch" style="background:%s"></div></td><td>%s</td></tr>' % (
             role, E(prop[role]['map']), gradient(role), E(why[role])))
     passing = [n for n, m in rep['maps'].items() if m['kind'] == 'diverging' and m['yellowOrange'] == 0 and m.get('passes')]
-    ex = [('ex2_return_curve', 'A return-level curve, buoy A, monthly maxima', 'Certified knots are decided; the joins between them are one curve of the many the knots allow, so they are chosen (dotted); the delta-method intervals are computed (dashed); 100 years is a guide. Beside it, the premise ladder names what the number rests on.'),
+    ex = [('ex5_contour_virocon', 'An environmental contour from virocon', 'A 20-year IFORM contour from virocon\'s published OMAE2020 Hs–Tz model, fitted by virocon to the 82,805 hours of dataset A: a fit and a numerical construction, so computed (dashed), over the hours counted exactly into chosen cells. Beside it, the premises the contour rests on.'),
+          ('ex6_rose', 'A wave rose', 'Where the waves come from and how high, NDBC buoy 44007 in 2015: exact counts given 16 sectors and 1 m classes (both chosen, and said so in italic); the records with no direction are counted in words, after ∅, not drawn.'),
+          ('ex7_qq', 'A QQ plot', 'Monthly maxima (exact) against a GEV fitted by maximum likelihood (computed), at plotting positions i/(n + 1) (chosen). Each point pairs a decided value with a computed one, so the curve is as strong as its weaker coordinate: computed.'),
+          ('ex8_peaks', 'Peaks over a threshold', 'A winter of hourly Hs as recorded (solid), the threshold given p = 0.99 (chosen, dotted), each storm\'s exact peak given a 48 h separation, and nine days with no record as a void with words — no line drawn across them.'),
           ('ex1_design_wave', 'A design wave by block', 'The 100-year Hs by the block the maxima are taken over: the picked family decided, the other hollow, the statistical interval computed; where the choice is refused, a void and words instead of a point.'),
-          ('ex3_contours', 'Environmental contours over the hours', 'Three submitted 20-year contours over the hours counted exactly into cells (the neutral order ramp); the edge a test adds to close an open file is chosen. The small side panel shows the witness on an unrelated record: a printed arithmetic step that does not hold.')]
+          ('ex3_contours', 'Submitted contours over the hours', 'Three submitted 20-year contours over the hours counted exactly into cells; the edge a test adds to close an open file is chosen. The small side panel shows the witness on an unrelated record: a printed arithmetic step that does not hold.')]
     gal = []
     for name, title, cap in ex:
-        gal.append('<figure><a href="figures/%s.svg"><img src="figures/%s.svg" alt="%s" loading="lazy"></a><figcaption><b>%s.</b> %s<br><a href="examples/plotly_%s.html">interactive (plotly)</a><a href="figures/%s-grey.svg">greyscale</a><a href="%s/blob/main/examples/%s.py">source</a></figcaption></figure>' % (
-            name, name, E(title), E(title), E(cap), name, name, REPO, name))
+        inter = ('<a href="examples/plotly_%s.html">interactive (plotly)</a>' % name) if ('plotly_%s.html' % name) in FILES['examples'] else ''
+        gal.append('<figure id="%s"><a href="figures/%s.svg"><img src="figures/%s.svg" alt="%s" loading="lazy"></a><figcaption><b>%s.</b> %s<br>%s<a href="figures/%s-grey.svg">greyscale</a><a href="%s/blob/main/examples/%s.py">source</a></figcaption></figure>' % (
+            name, name, name, E(title), E(title), E(cap), inter, name, REPO, name))
     body = """
-<header class="top"><div class="wrap"><a class="brand" href="./">Leadline<small>v%(ver)s</small></a><nav><a href="#strokes">Strokes</a><a href="#start">Start</a><a href="#examples">Examples</a><a href="#fields">Fields</a><a href="%(repo)s">GitHub</a></nav></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="./">Leadline<small>v%(ver)s</small></a><nav><a href="#strokes">Strokes</a><a href="guide.html">Guide</a><a href="#examples">Examples</a><a href="#fields">Fields</a><a href="%(repo)s">GitHub</a></nav></div></header>
 <main class="wrap">
 <div class="eyebrow">a dialect of WARRANT · for metocean and offshore figures</div>
 <h1>Every mark says what it rests on.</h1>
 <p class="lede">Leadline is a visual grammar for matplotlib and plotly figures. A value an exact decision backs is drawn one way; a fitted or printed number another; a value picked from several the data allow a third. Where nothing could be decided, the figure says so in words instead of drawing a zero.</p>
 <blockquote>A leadsman's calls kept two kinds of depth apart: one read at a marked fathom, <i>"by the mark five"</i>, and one judged between the marks, <i>"by the deep six"</i>. Leadline keeps the same distinction in a figure.</blockquote>
 <div class="badges"><a class="badge" href="%(repo)s">GitHub</a><span class="badge">MIT</span><span class="badge">Python ≥ 3.7</span><span class="badge dim">v%(ver)s · a starter to iterate on</span></div>
-<figure><a href="figures/ex2_return_curve.svg"><img src="figures/ex2_return_curve.svg" alt="A return-level curve drawn in Leadline"></a><figcaption>Return levels at a buoy: decided knots, chosen joins, computed intervals, a guide at 100 years, and the premises the numbers rest on. <a href="examples/plotly_ex2_return_curve.html">interactive</a></figcaption></figure>
+<figure id="ex2_return_curve"><a href="figures/ex2_return_curve.svg"><img src="figures/ex2_return_curve.svg" alt="A return-level curve drawn in Leadline"></a><figcaption>Return levels at a buoy: decided knots, chosen joins, computed intervals, a guide at 100 years, and the premises the numbers rest on. <a href="examples/plotly_ex2_return_curve.html">interactive</a></figcaption></figure>
 
 <h2 id="strokes">Four strokes</h2>
 <p>A mark's standing is carried by its stroke and nothing else. Verdicts are words; colour carries neither.</p>
@@ -143,6 +147,7 @@ def page():
 <li><b>A legend wherever a standing is drawn</b>, in the grammar's own words.</li>
 </ol>
 <p>The helpers refuse what the grammar forbids: a stroke for <i>refused</i>, a void or a witness without words, a fourth series, a caller's own colour or dash on a standing line.</p>
+<p><b>Which standing does a number have?</b> A fitted return level, a contour, a threshold, a bin width, a gap in the record: <a href="guide.html">the guide</a> classifies the numbers of a metocean pipeline, one by one, each with its example.</p>
 
 <h2 id="start">Start</h2>
 <pre><code>git clone %(repo)s && cd leadline
@@ -164,7 +169,7 @@ lp.knot(fig, 100, level_100, series=0)
 lp.legend_standings(fig, (lp.COMPUTED, lp.CHOSEN))</code></pre>
 
 <h2 id="examples">Examples</h2>
-<p>Drawn from public records (an NDBC buoy; dataset A of the environmental-contour benchmark), each in matplotlib for print and in plotly for the screen, each with a greyscale twin.</p>
+<p>Drawn from public records (NDBC buoys; dataset A of the environmental-contour benchmark, fetched at a pinned commit and never redistributed), in matplotlib for print, several also in plotly for the screen, each with a greyscale twin.</p>
 <div class="gallery">%(gallery)s</div>
 
 <h2 id="fields">Colour for fields <span class="tag prop">PROPOSAL</span></h2>
@@ -182,16 +187,79 @@ lp.legend_standings(fig, (lp.COMPUTED, lp.CHOSEN))</code></pre>
 <footer><div class="wrap">Leadline v%(ver)s · MIT · the examples' data carry their own licences (<a href="%(repo)s/blob/main/examples/data/README.md">examples/data</a>) · colour maps: Crameri, Shephard &amp; Heron, <i>Nature Communications</i> 11, 5444 (2020) · <a href="%(repo)s">source</a></div></footer>
 """ % {'ver': leadline.__version__, 'repo': REPO, 'warrant': WARRANT, 'rows': ''.join(rows), 'ids': idrow, 'guide': R['patterns']['GUIDE'], 'gallery': ''.join(gal),
        'frows': ''.join(frows), 'passing': ', '.join(passing), 'blue': prop['magnitude']['printBlueWorst'], 'wit': prop['difference']['witnessWorst']}
-    head = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>Leadline</title><meta name="description" content="Leadline: a visual grammar for matplotlib and plotly figures in which every mark says what it rests on.">'
+    return head('Leadline', 'Leadline: a visual grammar for matplotlib and plotly figures in which every mark says what it rests on.') + body + '</body></html>\n'
+
+
+def head(title, description):
+    css = CSS % {'paper': tok('paper'), 'ink': tok('ink'), 'ink2': tok('ink-2'), 'ink3': tok('ink-3'), 'guide': tok('guide'), 'grid': tok('grid'),
+                 'witness': tok('witness'), 'id2': tok('id-2')}
+    return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            '<title>%s</title><meta name="description" content="%s">'
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">'
-            '<style>%s</style></head><body>') % css
-    return head + body + '</body></html>\n'
+            '<style>%s</style></head><body>') % (E(title), E(description), css)
 
 
-FILES = {'figures': ['ex1_design_wave.svg', 'ex1_design_wave-grey.svg', 'ex2_return_curve.svg', 'ex2_return_curve-grey.svg', 'ex3_contours.svg', 'ex3_contours-grey.svg', 'ex4_fields.svg'],
-         'examples': ['plotly_ex1_design_wave.html', 'plotly_ex2_return_curve.html', 'plotly_ex3_contours.html', 'plotly_ex4_fields.html']}
+# the guide: each kind of number a metocean pipeline puts on a figure, its standing, its stroke, its example
+GUIDE = [
+    ('The record', [
+        ('A measured or hindcast value, as recorded: an hourly Hs, a mean wave direction, a wind speed', 'DECIDED', 'the record itself: nothing of ours stands between it and the mark', 'solid; a knot for one value', 'ex8_peaks', 'the winter of hourly Hs'),
+        ('An exact count, sum, maximum or order statistic of the record: hours per cell, monthly maxima, an empirical quantile', 'DECIDED', 'exact arithmetic on the record', 'the neutral ramp for counts; knots for values', 'ex6_rose', 'the counts per sector and class'),
+        ('A certified enclosure of a return level (an exact bound on what the fit gives)', 'DECIDED', 'an exact decision', 'a knot', 'ex1_design_wave', 'the certified levels'),
+    ]),
+    ('Models and fits', [
+        ('A fitted parameter, a return level from a fit, a model quantile', 'COMPUTED', 'a fit in floating point, an optimizer stopped at a tolerance', 'dashed 5 4', 'ex7_qq', 'the GEV quantiles'),
+        ('An environmental contour from a fitted joint model (IFORM, ISORM, highest density, direct sampling)', 'COMPUTED', 'a fit and a numerical construction', 'dashed, on a paper casing over a field', 'ex5_contour_virocon', 'the 20-year contour'),
+        ('A statistical interval: delta method, profile likelihood, bootstrap', 'COMPUTED', 'an approximation; call it statistical, never confuse it with an enclosure', 'a dashed whisker', 'ex1_design_wave', 'the 95% delta intervals'),
+        ('A number someone printed: a value in a report, a table, a paper', 'COMPUTED', 'nothing here decided it', 'dashed, or the witness × where the record contradicts it', 'ex3_contours', 'the side panel'),
+    ]),
+    ('Choices', [
+        ('A threshold for peaks over a threshold, a block size, a return period, a declustering window, a plotting position', 'CHOSEN', 'picked by the analyst or a standard, not by the data; name it in italic: given p = 0.99', 'dotted 1 5', 'ex8_peaks', 'the threshold, given p = 0.99'),
+        ('Bins and classes: cells, sectors, Hs classes', 'CHOSEN', 'the counts in them are exact given the bins; say given 16 sectors', 'italic words beside the decided counts', 'ex6_rose', 'given 16 sectors and 1 m classes'),
+        ('A curve drawn between decided knots, or one value shown from several the data allow equally', 'CHOSEN', 'one of many; say so', 'dotted', 'ex2_return_curve', 'the joins between certified levels'),
+    ]),
+    ('Nothing to show', [
+        ('Hours with no record, a fit that did not converge, a choice that could not be made', 'REFUSED', 'the input is missing or the method declined', 'no mark: a hatched void and ∅ with words — never a zero, never a line drawn across', 'ex8_peaks', 'nine days with no record'),
+    ]),
+]
+
+
+def guide():
+    legend = {g['standing']: g for g in R['legend']}
+    sections = []
+    for title, rows in GUIDE:
+        trs = []
+        for what, standing, why, drawn, ex, exwhat in rows:
+            trs.append('<tr><td>%s</td><td class="w"><b>%s</b><div style="margin-top:6px">%s</div></td><td>%s<div style="font:12px var(--mono);color:var(--ink-3);margin-top:6px">%s</div></td><td><a href="index.html#%s">%s</a></td></tr>' % (
+                E(what), E(legend[standing]['label']), stroke_svg(standing, w=90, h=14), E(why), E(drawn), ex, E(exwhat)))
+        sections.append('<h2>%s</h2><div class="tablewrap"><table class="guide"><colgroup><col style="width:34%%"><col style="width:14%%"><col style="width:34%%"><col style="width:18%%"></colgroup><thead><tr><th>the number</th><th>standing</th><th>why</th><th>example</th></tr></thead><tbody>%s</tbody></table></div>' % (E(title), ''.join(trs)))
+    body = """
+<header class="top"><div class="wrap"><a class="brand" href="./">Leadline<small>v%(ver)s</small></a><nav><a href="index.html#strokes">Strokes</a><a href="guide.html">Guide</a><a href="index.html#examples">Examples</a><a href="index.html#fields">Fields</a><a href="%(repo)s">GitHub</a></nav></div></header>
+<main class="wrap">
+<div class="eyebrow">the guide</div>
+<h1>What does each number rest on?</h1>
+<p class="lede">Every number on a metocean figure rests on something: the record, a fit, a choice, or nothing at all. Leadline asks the figure to say which. This guide classifies the numbers a pipeline usually draws, each with an example from the gallery.</p>
+<h2>Four questions to ask of any number</h2>
+<ol class="rules">
+<li><b>Could I get it back exactly from the record?</b> A value as recorded, a count, a maximum, an order statistic. It is <b>decided</b>: solid.</li>
+<li><b>Did a fit, a solver or someone's printout produce it?</b> It is <b>computed</b>: dashed.</li>
+<li><b>Did a person, a default or a standard pick it?</b> A threshold, a bin, a return period, a plotting position. It is <b>chosen</b>: dotted, and the figure names the pick in italic, <i>given p = 0.99</i>.</li>
+<li><b>Is there nothing to show?</b> Missing hours, a refused fit. It is <b>refused</b>: no mark, a hatched void, ∅ and words.</li>
+</ol>
+<p><b>A mark is as strong as the weakest number on its path.</b> A QQ point pairs an exact monthly maximum with a fitted quantile, so the curve through those points is computed. A storm peak is the exact maximum of its run, but the runs come from a chosen threshold and separation, so the peak is decided <i>given</i> those choices, and the figure says so.</p>
+%(sections)s
+<h2>And beneath every number: the premises</h2>
+<p>A decided count still rests on the record being right; a computed contour also rests on its model, its state duration and its method. Leadline's premise ladder (<code>lm.premises</code>) lists them in the order the number travelled through them and names the weakest: see the return-level curve and the contour in the <a href="index.html#examples">gallery</a>.</p>
+</main>
+<footer><div class="wrap">Leadline v%(ver)s · MIT · <a href="index.html">overview</a> · <a href="%(repo)s">source</a></div></footer>
+""" % {'ver': leadline.__version__, 'repo': REPO, 'sections': ''.join(sections)}
+    return head('What does each number rest on? — Leadline', 'A guide to the standing of the numbers on metocean figures: decided, computed, chosen, refused.') + body + '</body></html>\n'
+
+
+GALLERY = ['ex1_design_wave', 'ex2_return_curve', 'ex3_contours', 'ex5_contour_virocon', 'ex6_rose', 'ex7_qq', 'ex8_peaks']
+FILES = {'figures': [n + s + '.svg' for n in GALLERY for s in ('', '-grey')] + ['ex4_fields.svg'],
+         'examples': ['plotly_ex1_design_wave.html', 'plotly_ex2_return_curve.html', 'plotly_ex3_contours.html', 'plotly_ex4_fields.html',
+                      'plotly_ex5_contour_virocon.html', 'plotly_ex8_peaks.html']}
 
 
 def build(out):
@@ -204,6 +272,8 @@ def build(out):
     shutil.copyfile(os.path.join(ROOT, 'fields-report.json'), os.path.join(out, 'fields-report.json'))
     with open(os.path.join(out, 'index.html'), 'w', encoding='utf-8') as f:
         f.write(page())
+    with open(os.path.join(out, 'guide.html'), 'w', encoding='utf-8') as f:
+        f.write(guide())
 
 
 def tree(d):

@@ -74,8 +74,8 @@ def test_red_controls(lib):
 # ---- the figures ---------------------------------------------------------------------------------------------------
 def test_svg_figures_draw_only_the_grammar():
     """every dash in the kit's figures is one the grammar permits, and every colour a register colour"""
-    svgs = [p for p in glob.glob(os.path.join(ROOT, 'examples', 'out', 'ex[123]_*.svg'))]
-    assert len(svgs) == 6
+    svgs = [p for p in glob.glob(os.path.join(ROOT, 'examples', 'out', 'ex*.svg')) if 'ex4_fields' not in p]   # ex4: the proposal's colours
+    assert len(svgs) == 14
     for p in svgs:
         t = open(p, encoding='utf-8').read()
         dashes = {d.replace(',', ' ') for d in re.findall(r'stroke-dasharray: ([0-9.,]+)', t)}
@@ -91,9 +91,11 @@ def test_red_control_a_planted_dash_is_seen():
 
 def test_plotly_examples_draw_only_the_grammar():
     sys.path.insert(0, os.path.join(ROOT, 'examples'))
+    sys.path.insert(0, os.path.join(ROOT, 'examples', 'data'))
     import plotly_examples as px_ex
     ok_dash = {'solid'} | {','.join('%gpx' % float(v) for v in p.split()) for p in PERMITTED}
-    for fn in (px_ex.ex1, px_ex.ex2, px_ex.ex3):
+    import ex5_contour_virocon, ex8_peaks
+    for fn in (px_ex.ex1, px_ex.ex2, px_ex.ex3, ex5_contour_virocon.build_plotly, ex8_peaks.build_plotly):
         fig = fn()
         for tr in fig.data:
             d = getattr(getattr(tr, 'line', None), 'dash', None)
@@ -138,7 +140,10 @@ def test_docs_are_built_from_the_sources():
 
 
 def test_docs_links_resolve():
-    """every local href and src of docs/index.html is a file in docs/"""
-    t = open(os.path.join(ROOT, 'docs', 'index.html'), encoding='utf-8').read()
-    local = [u for u in re.findall(r'(?:href|src)="([^"#]+)"', t) if not re.match(r'(https?:|mailto:)', u) and u != './']
-    assert local and all(os.path.isfile(os.path.join(ROOT, 'docs', u)) for u in local), [u for u in local if not os.path.isfile(os.path.join(ROOT, 'docs', u))]
+    """every local href and src of the docs pages is a file in docs/, and every #anchor into a page is an id there"""
+    pages = {n: open(os.path.join(ROOT, 'docs', n), encoding='utf-8').read() for n in ('index.html', 'guide.html')}
+    for name, t in pages.items():
+        local = [u for u in re.findall(r'(?:href|src)="([^"#]+)"', t) if not re.match(r'(https?:|mailto:)', u) and u != './']
+        assert local and all(os.path.isfile(os.path.join(ROOT, 'docs', u)) for u in local), (name, [u for u in local if not os.path.isfile(os.path.join(ROOT, 'docs', u))])
+        for target, anchor in re.findall(r'href="([a-z]+\.html)?#([\w-]+)"', t):
+            assert 'id="%s"' % anchor in pages[target or name], (name, target, anchor)

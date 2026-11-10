@@ -203,7 +203,11 @@ def void(fig, x0, x1, y0, y1, words=None, row=None, col=None):
     _add(fig, go.Scatter(x=[x0, x1, x1, x0, x0], y=[y0, y0, y1, y1, y0], mode='lines', fill='toself', hoverinfo='skip', showlegend=False,
                          line=dict(color=colour(v['edge']), width=0.6),
                          fillpattern=dict(shape='/', fgcolor=colour(v['edge']), bgcolor=colour('paper'), size=6, solidity=0.15)), row, col)
-    ann = dict(x=(x0 + x1) / 2, y=y1, yanchor='top', text=v['glyph'] + ' ' + str(words).replace('\n', '<br>'), showarrow=False,
+    try:
+        mid = (x0 + x1) / 2
+    except TypeError:                                   # dates: the midpoint is a start plus half the span
+        mid = x0 + (x1 - x0) / 2
+    ann = dict(x=mid, y=y1, yanchor='top', text=v['glyph'] + ' ' + str(words).replace('\n', '<br>'), showarrow=False,
                font=dict(size=10, color=colour('ink')), bgcolor=colour('paper'))
     if row is not None:
         ann.update(row=row, col=col)
