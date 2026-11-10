@@ -6,7 +6,7 @@
   records fetched at their pins (`examples/data/fetch.py`), never committed.
 - The guide, `docs/guide.html`: what does each number rest on? — the numbers of a metocean pipeline, one by one.
 - `leadline.export`: report sizes and one call for SVG, PDF and PNG with the greyscale twin.
-- Tests on GitHub Actions (Python 3.8–3.12; 3.7 allowed to fail), a release workflow for PyPI (trusted publishing), the
+- Tests on GitHub Actions (Python 3.7–3.12, all required), a release workflow for PyPI (trusted publishing), the
   docs redeployed on every push (Vercel, from `docs/`).
 - `leadline.plotly.void` takes dates.
 

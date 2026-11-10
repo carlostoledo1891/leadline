@@ -8,15 +8,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - {os: ubuntu-latest, python: '3.8'}
-          - {os: ubuntu-latest, python: '3.9'}
+        include:                                   # 3.7 to 3.9 are no longer built for ubuntu-latest (26.04): run them on 22.04
+          - {os: ubuntu-22.04, python: '3.7'}
+          - {os: ubuntu-22.04, python: '3.8'}
+          - {os: ubuntu-22.04, python: '3.9'}
           - {os: ubuntu-latest, python: '3.10'}
           - {os: ubuntu-latest, python: '3.11'}
           - {os: ubuntu-latest, python: '3.12'}
-          - {os: ubuntu-22.04, python: '3.7', legacy: true}
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.legacy == true }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
