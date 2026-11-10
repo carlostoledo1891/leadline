@@ -208,7 +208,8 @@ def build(out):
 
 def tree(d):
     out = {}
-    for base, _, files in os.walk(d):
+    for base, dirs, files in os.walk(d):
+        dirs[:] = [x for x in dirs if x != '.vercel']        # the Vercel CLI's link to the project, not documentation
         for n in files:
             p = os.path.join(base, n)
             out[os.path.relpath(p, d)] = open(p, 'rb').read()

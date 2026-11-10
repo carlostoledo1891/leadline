@@ -2,6 +2,8 @@
 
 **Figures in which every mark says what it rests on — WARRANT's grammar for the sea and for fields, in Python.**
 
+**Documentation: [leadline-grammar.vercel.app](https://leadline-grammar.vercel.app/)**
+
 > A leadsman's calls kept two kinds of depth apart: one read at a marked fathom — *"by the mark five"* — and one judged
 > between the marks — *"by the deep six"*. Leadline keeps the same distinction in a figure. A value an exact decision
 > backs is drawn one way; a fitted or printed number another; a value picked from several the data allow a third; and
@@ -117,6 +119,8 @@ A change to the grammar itself starts in cert-machine; a change to the proposal 
 
 ```bash
 python -m pytest tests/                     # the checks, each with its red control
+python tools/build_docs.py                  # rebuild docs/ (the documentation page) from the package
+cd docs && npx vercel deploy --prod         # publish it (the Vercel project "leadline")
 python tools/validate_fields.py --check      # the proposal's numbers are what the maps measure
 python tools/tokens.py --check               # the Figma tokens are what the sources give
 python examples/plotly_examples.py           # redraw the plotly examples (the matplotlib ones: examples/ex*.py)
