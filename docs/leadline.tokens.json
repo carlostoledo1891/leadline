@@ -1,5 +1,5 @@
 {
- "$description": "Leadline 0.1.0 — design tokens generated from cert-machine's print register and leadline.fields; do not edit by hand",
+ "$description": "Leadline 0.2.0 — design tokens generated from cert-machine's print register and leadline.fields; do not edit by hand",
  "colour": {
   "paper": {
    "$type": "color",
