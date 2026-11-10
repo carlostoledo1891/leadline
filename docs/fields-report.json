@@ -1,0 +1,528 @@
+{
+ "what": "the measurements behind warrant_fields (a proposal): Crameri maps screened by WARRANT's colour rules",
+ "samples": 256,
+ "thresholds": {
+  "normal": 15,
+  "cvd": 8
+ },
+ "maps": {
+  "oslo": {
+   "kind": "sequential",
+   "yellowOrange": 0,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.07,
+    1.0
+   ]
+  },
+  "devon": {
+   "kind": "sequential",
+   "yellowOrange": 0,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.27,
+    1.0
+   ]
+  },
+  "davos": {
+   "kind": "sequential",
+   "yellowOrange": 21,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.195,
+    0.998
+   ]
+  },
+  "lapaz": {
+   "kind": "sequential",
+   "yellowOrange": 0,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.258,
+    0.971
+   ]
+  },
+  "tokyo": {
+   "kind": "sequential",
+   "yellowOrange": 6,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.208,
+    0.973
+   ]
+  },
+  "nuuk": {
+   "kind": "sequential",
+   "yellowOrange": 96,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.449,
+    0.98
+   ]
+  },
+  "acton": {
+   "kind": "sequential",
+   "yellowOrange": 0,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.231,
+    0.947
+   ]
+  },
+  "batlow": {
+   "kind": "sequential",
+   "yellowOrange": 87,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.251,
+    0.899
+   ]
+  },
+  "imola": {
+   "kind": "sequential",
+   "yellowOrange": 12,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.404,
+    0.972
+   ]
+  },
+  "turku": {
+   "kind": "sequential",
+   "yellowOrange": 106,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.012,
+    0.945
+   ]
+  },
+  "bilbao": {
+   "kind": "sequential",
+   "yellowOrange": 96,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.262,
+    1.0
+   ]
+  },
+  "grayC": {
+   "kind": "sequential",
+   "yellowOrange": 0,
+   "lightnessMonotone": true,
+   "lightness": [
+    0.0,
+    1.0
+   ]
+  },
+  "vik": {
+   "kind": "diverging",
+   "yellowOrange": 82,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.246,
+    0.928
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 22.9,
+     "protan": 16.5,
+     "deutan": 19.2,
+     "tritan": 18.5
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 26.3,
+     "protan": 18.6,
+     "deutan": 23.9,
+     "tritan": 26.1
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 19.0,
+     "protan": 13.0,
+     "deutan": 16.6,
+     "tritan": 23.6
+    }
+   ],
+   "passes": true
+  },
+  "cork": {
+   "kind": "diverging",
+   "yellowOrange": 0,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.251,
+    0.942
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 15.9,
+     "protan": 13.8,
+     "deutan": 12.5,
+     "tritan": 4.6
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 18.3,
+     "protan": 17.3,
+     "deutan": 16.8,
+     "tritan": 4.0
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 11.9,
+     "protan": 11.5,
+     "deutan": 11.3,
+     "tritan": 4.4
+    }
+   ],
+   "passes": false
+  },
+  "broc": {
+   "kind": "diverging",
+   "yellowOrange": 101,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.262,
+    0.95
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 14.7,
+     "protan": 13.8,
+     "deutan": 13.2,
+     "tritan": 3.1
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 16.9,
+     "protan": 15.9,
+     "deutan": 17.7,
+     "tritan": 11.1
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 16.0,
+     "protan": 14.9,
+     "deutan": 16.7,
+     "tritan": 12.8
+    }
+   ],
+   "passes": false
+  },
+  "berlin": {
+   "kind": "diverging",
+   "yellowOrange": 64,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.172,
+    0.827
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 17.7,
+     "protan": 12.6,
+     "deutan": 17.1,
+     "tritan": 17.7
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 21.5,
+     "protan": 18.5,
+     "deutan": 16.3,
+     "tritan": 25.4
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 18.1,
+     "protan": 17.3,
+     "deutan": 13.7,
+     "tritan": 21.0
+    }
+   ],
+   "passes": true
+  },
+  "lisbon": {
+   "kind": "diverging",
+   "yellowOrange": 79,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.208,
+    0.99
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 10.3,
+     "protan": 9.5,
+     "deutan": 9.8,
+     "tritan": 6.1
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 14.4,
+     "protan": 13.6,
+     "deutan": 15.0,
+     "tritan": 10.7
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 14.5,
+     "protan": 13.1,
+     "deutan": 15.2,
+     "tritan": 11.2
+    }
+   ],
+   "passes": false
+  },
+  "tofino": {
+   "kind": "diverging",
+   "yellowOrange": 1,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.187,
+    0.901
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 14.8,
+     "protan": 14.1,
+     "deutan": 13.3,
+     "tritan": 2.8
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 19.8,
+     "protan": 18.5,
+     "deutan": 17.4,
+     "tritan": 3.6
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 15.3,
+     "protan": 14.4,
+     "deutan": 14.0,
+     "tritan": 3.5
+    }
+   ],
+   "passes": false
+  },
+  "bam": {
+   "kind": "diverging",
+   "yellowOrange": 0,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.341,
+    0.963
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 25.9,
+     "protan": 17.9,
+     "deutan": 10.2,
+     "tritan": 20.1
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 27.6,
+     "protan": 19.8,
+     "deutan": 12.9,
+     "tritan": 19.1
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 19.9,
+     "protan": 16.1,
+     "deutan": 11.4,
+     "tritan": 12.2
+    }
+   ],
+   "passes": true
+  },
+  "roma": {
+   "kind": "diverging",
+   "yellowOrange": 105,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.367,
+    0.898
+   ],
+   "sides": [
+    {
+     "pair": [
+      0.0,
+      1.0
+     ],
+     "normal": 28.7,
+     "protan": 23.8,
+     "deutan": 24.8,
+     "tritan": 23.3
+    },
+    {
+     "pair": [
+      0.15,
+      0.85
+     ],
+     "normal": 24.1,
+     "protan": 21.5,
+     "deutan": 23.1,
+     "tritan": 21.7
+    },
+    {
+     "pair": [
+      0.3,
+      0.7
+     ],
+     "normal": 19.9,
+     "protan": 18.2,
+     "deutan": 19.3,
+     "tritan": 19.2
+    }
+   ],
+   "passes": true
+  },
+  "corkO": {
+   "kind": "cyclic",
+   "yellowOrange": 0,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.362,
+    0.817
+   ]
+  },
+  "brocO": {
+   "kind": "cyclic",
+   "yellowOrange": 69,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.317,
+    0.861
+   ]
+  },
+  "vikO": {
+   "kind": "cyclic",
+   "yellowOrange": 66,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.313,
+    0.822
+   ]
+  },
+  "romaO": {
+   "kind": "cyclic",
+   "yellowOrange": 86,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.429,
+    0.882
+   ]
+  },
+  "bamO": {
+   "kind": "cyclic",
+   "yellowOrange": 0,
+   "lightnessMonotone": false,
+   "lightness": [
+    0.348,
+    0.851
+   ]
+  }
+ },
+ "proposed": {
+  "magnitude": {
+   "map": "oslo_r",
+   "kind": "sequential",
+   "paper_reversed": true,
+   "witnessWorst": 15.8,
+   "printBlueWorst": 3.8,
+   "yellowOrange": 0,
+   "lightnessMonotone": true
+  },
+  "difference": {
+   "map": "bam",
+   "kind": "diverging",
+   "paper_reversed": false,
+   "witnessWorst": 1.0,
+   "printBlueWorst": 19.5,
+   "yellowOrange": 0,
+   "lightnessMonotone": false
+  },
+  "direction": {
+   "map": "bamO",
+   "kind": "cyclic",
+   "paper_reversed": false,
+   "witnessWorst": 0.5,
+   "printBlueWorst": 16.3,
+   "yellowOrange": 0,
+   "lightnessMonotone": false
+  }
+ }
+}

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leadline"
+version = "0.1.0"
+description = "WARRANT's grammar for the sea and for fields: matplotlib and plotly figures in which every mark says what it rests on"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Carlos Toledo" }]
+requires-python = ">=3.7"
+dependencies = ["matplotlib>=3.5", "numpy"]
+
+[project.optional-dependencies]
+plotly = ["plotly>=5.6"]
+fields = ["cmcrameri"]
+all = ["plotly>=5.6", "cmcrameri"]
+test = ["pytest", "plotly>=5.6", "cmcrameri"]
+
+[tool.setuptools]
+packages = ["leadline", "leadline.mpl"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"leadline.mpl" = ["register.json", "*.mplstyle"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

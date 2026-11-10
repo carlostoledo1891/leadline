@@ -1,0 +1,336 @@
+{
+ "$description": "Leadline 0.1.0 — design tokens generated from cert-machine's print register and leadline.fields; do not edit by hand",
+ "colour": {
+  "paper": {
+   "$type": "color",
+   "$value": "#ffffff",
+   "$description": "the page and every figure ground: white paper"
+  },
+  "ink": {
+   "$type": "color",
+   "$value": "#000000",
+   "$description": "text and values; DECIDED strokes (solid); the first series compared (identity 1, ●)"
+  },
+  "ink-2": {
+   "$type": "color",
+   "$value": "#262626",
+   "$description": "COMPUTED strokes (dashed 5 4); a second text voice"
+  },
+  "ink-3": {
+   "$type": "color",
+   "$value": "#4d4d4d",
+   "$description": "CHOSEN strokes (dotted 1 5, round caps); axes, ticks, axis labels, captions, glosses; the third series (identity 3, ▲)"
+  },
+  "guide": {
+   "$type": "color",
+   "$value": "#8a8a8a",
+   "$description": "the guide pattern (2 3): rulers, reference ghosts; the void's hatch and edge. Never text, never a datum"
+  },
+  "grid": {
+   "$type": "color",
+   "$value": "#dcdcdc",
+   "$description": "hairline grid and table rules, drawn under everything; never a mark"
+  },
+  "witness": {
+   "$type": "color",
+   "$value": "#e0574e",
+   "$description": "an exhibited counterexample, only ever on the × glyph beside words (WARRANT rule 5); the same red as the site"
+  },
+  "id-2": {
+   "$type": "color",
+   "$value": "#3368c1",
+   "$description": "the second series compared in one figure, always with its own marker (■) and a word; never standing, never a verdict (marked proposed in the register; approved in WARRANT.md v2.3, 2026-10-29)"
+  },
+  "o-1": {
+   "$type": "color",
+   "$value": "#e9e9e9",
+   "$description": "order ramp, step 1 (least)"
+  },
+  "o-2": {
+   "$type": "color",
+   "$value": "#d5d5d5",
+   "$description": "order ramp, step 2"
+  },
+  "o-3": {
+   "$type": "color",
+   "$value": "#c1c1c1",
+   "$description": "order ramp, step 3"
+  },
+  "o-4": {
+   "$type": "color",
+   "$value": "#aeaeae",
+   "$description": "order ramp, step 4"
+  },
+  "o-5": {
+   "$type": "color",
+   "$value": "#9b9b9b",
+   "$description": "order ramp, step 5 (most)"
+  }
+ },
+ "grey": {
+  "paper": {
+   "$type": "color",
+   "$value": "#ffffff",
+   "$description": "the greyscale value of paper, as a mono laser prints it"
+  },
+  "ink": {
+   "$type": "color",
+   "$value": "#000000",
+   "$description": "the greyscale value of ink, as a mono laser prints it"
+  },
+  "ink-2": {
+   "$type": "color",
+   "$value": "#262626",
+   "$description": "the greyscale value of ink-2, as a mono laser prints it"
+  },
+  "ink-3": {
+   "$type": "color",
+   "$value": "#4d4d4d",
+   "$description": "the greyscale value of ink-3, as a mono laser prints it"
+  },
+  "guide": {
+   "$type": "color",
+   "$value": "#8a8a8a",
+   "$description": "the greyscale value of guide, as a mono laser prints it"
+  },
+  "grid": {
+   "$type": "color",
+   "$value": "#dcdcdc",
+   "$description": "the greyscale value of grid, as a mono laser prints it"
+  },
+  "witness": {
+   "$type": "color",
+   "$value": "#848484",
+   "$description": "the greyscale value of witness, as a mono laser prints it"
+  },
+  "id-2": {
+   "$type": "color",
+   "$value": "#6a6a6a",
+   "$description": "the greyscale value of id-2, as a mono laser prints it"
+  },
+  "o-1": {
+   "$type": "color",
+   "$value": "#e9e9e9",
+   "$description": "the greyscale value of o-1, as a mono laser prints it"
+  },
+  "o-2": {
+   "$type": "color",
+   "$value": "#d5d5d5",
+   "$description": "the greyscale value of o-2, as a mono laser prints it"
+  },
+  "o-3": {
+   "$type": "color",
+   "$value": "#c1c1c1",
+   "$description": "the greyscale value of o-3, as a mono laser prints it"
+  },
+  "o-4": {
+   "$type": "color",
+   "$value": "#aeaeae",
+   "$description": "the greyscale value of o-4, as a mono laser prints it"
+  },
+  "o-5": {
+   "$type": "color",
+   "$value": "#9b9b9b",
+   "$description": "the greyscale value of o-5, as a mono laser prints it"
+  }
+ },
+ "stroke": {
+  "decided": {
+   "$type": "strokeStyle",
+   "$value": "solid",
+   "$description": "DECIDED: exact arithmetic backs it; colour {colour.ink}"
+  },
+  "computed": {
+   "$type": "strokeStyle",
+   "$value": {
+    "dashArray": [
+     "5px",
+     "4px"
+    ],
+    "lineCap": "butt"
+   },
+   "$description": "COMPUTED: float, or a number someone printed; nothing decided it; colour {colour.ink-2}"
+  },
+  "chosen": {
+   "$type": "strokeStyle",
+   "$value": {
+    "dashArray": [
+     "1px",
+     "5px"
+    ],
+    "lineCap": "round"
+   },
+   "$description": "CHOSEN: one member of a set the data admits; colour {colour.ink-3}"
+  },
+  "refused": {
+   "$type": "strokeStyle",
+   "$value": "solid",
+   "$description": "no stroke: a hatched void (guide grey) and ∅ with words"
+  },
+  "guide": {
+   "$type": "strokeStyle",
+   "$value": {
+    "dashArray": [
+     "2px",
+     "3px"
+    ],
+    "lineCap": "butt"
+   },
+   "$description": "a ruler or a leader: says nothing"
+  }
+ },
+ "identity": {
+  "1": {
+   "$type": "color",
+   "$value": "{colour.ink}",
+   "$description": "series 1, always with the marker ●"
+  },
+  "2": {
+   "$type": "color",
+   "$value": "{colour.id-2}",
+   "$description": "series 2, always with the marker ■"
+  },
+  "3": {
+   "$type": "color",
+   "$value": "{colour.ink-3}",
+   "$description": "series 3, always with the marker ▲"
+  }
+ },
+ "type": {
+  "reading": {
+   "$type": "fontFamily",
+   "$value": [
+    "Inter",
+    "DejaVu Sans",
+    "sans-serif"
+   ]
+  },
+  "labels": {
+   "$type": "fontFamily",
+   "$value": [
+    "JetBrains Mono",
+    "DejaVu Sans Mono",
+    "monospace"
+   ]
+  }
+ },
+ "fields (PROPOSED)": {
+  "magnitude": {
+   "0": {
+    "$type": "color",
+    "$value": "#ffffff"
+   },
+   "1": {
+    "$type": "color",
+    "$value": "#ced1d7"
+   },
+   "2": {
+    "$type": "color",
+    "$value": "#a2b0ca"
+   },
+   "3": {
+    "$type": "color",
+    "$value": "#7b98ca"
+   },
+   "4": {
+    "$type": "color",
+    "$value": "#4e7abb"
+   },
+   "5": {
+    "$type": "color",
+    "$value": "#26568b"
+   },
+   "6": {
+    "$type": "color",
+    "$value": "#15385a"
+   },
+   "7": {
+    "$type": "color",
+    "$value": "#0e1d2d"
+   },
+   "8": {
+    "$type": "color",
+    "$value": "#010101"
+   },
+   "$description": "PROPOSED: oslo (sequential, Crameri), paper orientation; not part of WARRANT until approved"
+  },
+  "difference": {
+   "0": {
+    "$type": "color",
+    "$value": "#65024b"
+   },
+   "1": {
+    "$type": "color",
+    "$value": "#a5438c"
+   },
+   "2": {
+    "$type": "color",
+    "$value": "#d17fbc"
+   },
+   "3": {
+    "$type": "color",
+    "$value": "#ecc6e2"
+   },
+   "4": {
+    "$type": "color",
+    "$value": "#f6f1f0"
+   },
+   "5": {
+    "$type": "color",
+    "$value": "#d6e7bf"
+   },
+   "6": {
+    "$type": "color",
+    "$value": "#8ab363"
+   },
+   "7": {
+    "$type": "color",
+    "$value": "#4b7f2e"
+   },
+   "8": {
+    "$type": "color",
+    "$value": "#0d4c00"
+   },
+   "$description": "PROPOSED: bam (diverging, Crameri), paper orientation; not part of WARRANT until approved"
+  },
+  "direction": {
+   "0": {
+    "$type": "color",
+    "$value": "#4f3043"
+   },
+   "1": {
+    "$type": "color",
+    "$value": "#8f4f80"
+   },
+   "2": {
+    "$type": "color",
+    "$value": "#c285b2"
+   },
+   "3": {
+    "$type": "color",
+    "$value": "#dac0cc"
+   },
+   "4": {
+    "$type": "color",
+    "$value": "#cecdbb"
+   },
+   "5": {
+    "$type": "color",
+    "$value": "#94a376"
+   },
+   "6": {
+    "$type": "color",
+    "$value": "#676e4d"
+   },
+   "7": {
+    "$type": "color",
+    "$value": "#4d453c"
+   },
+   "8": {
+    "$type": "color",
+    "$value": "#4e3042"
+   },
+   "$description": "PROPOSED: bamO (cyclic, Crameri), paper orientation; not part of WARRANT until approved"
+  }
+ }
+}

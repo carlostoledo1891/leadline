@@ -1,0 +1,62 @@
+{
+ "what": "the cert-machine files Leadline copies (byte for byte), adapts (the import line only) or reads, by sha256",
+ "source": "github.com/carlostoledo1891/cert-machine",
+ "commit": "ab83eb76ef5b43264cfefe9e06e170de868c74c4",
+ "copied": {
+  "leadline/mpl/__init__.py": {
+   "from": "kits/warrant-mpl/warrant_mpl/__init__.py",
+   "sha256": "4b21364d8ae1c32b36b491118d2057e5791e6f3b5d85fedda6b774d484ac8792"
+  },
+  "leadline/mpl/register.json": {
+   "from": "kits/warrant-mpl/warrant_mpl/register.json",
+   "sha256": "dadb6b164ca0ee3436403e8f3f319ef8c1c667b67f5a2616a5fe6627294ceec4"
+  },
+  "leadline/mpl/warrant-print.mplstyle": {
+   "from": "kits/warrant-mpl/warrant_mpl/warrant-print.mplstyle",
+   "sha256": "e244ec10124559657d96082f67171cb90ba4f1248faf5ece9e3080818c5835f7"
+  },
+  "leadline/mpl/warrant-grey.mplstyle": {
+   "from": "kits/warrant-mpl/warrant_mpl/warrant-grey.mplstyle",
+   "sha256": "c1b45c971115d3a5c5eeea781f3a3ec45506c5b17b654e4b2e3dbaa7d98383f0"
+  },
+  "examples/data/README.md": {
+   "from": "kits/warrant-mpl/examples/data/README.md",
+   "sha256": "9f45de14b4f32ec0761476ee16b3ed7f788c7f9d718cc03e8e7164ac461c46f7"
+  },
+  "examples/data/buoy-a.json": {
+   "from": "kits/warrant-mpl/examples/data/buoy-a.json",
+   "sha256": "ddd5c7ed5c9c5fb360304ed2647fc56a49e95125b12460a545f54a0fdcbf81d9"
+  },
+  "examples/data/contours-a20.json": {
+   "from": "kits/warrant-mpl/examples/data/contours-a20.json",
+   "sha256": "9256e2274408e4af210a9068dacaecfef7b981cc4d72338583e14c6b01190207"
+  },
+  "examples/data/gsm8k-501.json": {
+   "from": "kits/warrant-mpl/examples/data/gsm8k-501.json",
+   "sha256": "473131c18a4e267956306b9d8de231924ac175b863e56e400065fc1a9389d9a7"
+  }
+ },
+ "adapted": {
+  "examples/ex1_design_wave.py": {
+   "from": "kits/warrant-mpl/examples/ex1_design_wave.py",
+   "sha256": "df9ab41c60f8a0a35dbf9702cf04a5c6f22bae9c7c4e9f9e075350c04329eb5f",
+   "change": "import warrant_mpl as wm -> import leadline.mpl as wm"
+  },
+  "examples/ex2_return_curve.py": {
+   "from": "kits/warrant-mpl/examples/ex2_return_curve.py",
+   "sha256": "83d0b5e001d52d2eaa1ccc291ada9e964cdaab6768f7ab9000cfd9e5ad0fbb2d",
+   "change": "import warrant_mpl as wm -> import leadline.mpl as wm"
+  },
+  "examples/ex3_contours.py": {
+   "from": "kits/warrant-mpl/examples/ex3_contours.py",
+   "sha256": "abe1114282467f95634d6251110c0475bf0e5c97e6e44e7acb53432bc3daed26",
+   "change": "import warrant_mpl as wm -> import leadline.mpl as wm"
+  }
+ },
+ "read": {
+  "design/WARRANT.md": "aeba21946e544db5c58e23735ef16b7bd7cb1d43c667ea77562ab1b459bff996",
+  "design/print/tokens.js": "9a6819651877b52e85bfdb321850a111cff49c5e1e4b1087c311eba5c1a0ed7e",
+  "design/grammar.js": "45d0f6bd48b93ef27e1c419d3bcfd86187933036590df989e1df88e36c41ef26",
+  "kits/warrant-mpl/README.md": "25394768939a9717cf2261afe300da6d4f1f362f58893ba267388a078d844c3f"
+ }
+}
